@@ -1,6 +1,6 @@
 <template>
   <div class="abilities">
-    <h4>Abilities of {{pokemon.name.toUpperCase()}}</h4>
+    <h4>Abilities of {{pokemon.name}}</h4>
     <ul class="list-group">
       <li class="list-group-item" v-bind:key="i" v-for="(ability,i) in pokemon.abilities">{{ability.ability.name}}</li>
     </ul>
@@ -10,16 +10,10 @@
 <script>
 export default {
   name: 'Abilities',
-  props: {
-    pokemon: Object
-  },
+  props: { pokemon: Object },
 }
 </script>
 
 <style scoped>
-  .abilities {
-    width: 200px;
-  }
-
-
+  .abilities { width: 200px; }
 </style>
