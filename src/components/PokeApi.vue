@@ -1,16 +1,16 @@
 <template>
   <div class="pokeapi jumbotron">
     <div class="left">
-      <img src="../assets/pikatchu.gif" alt="">
+      <img src="../assets/pikatchu.gif" alt="pikatchu">
     </div>
     <div class="center">
       <input v-on:input="getPokemon()" v-model="query" placeholder="Enter your Pokemon here..." />
-      <p>Searching for {{query}}</p>
+      <p>Searching for: {{query}}</p>
       <Abilities v-if="pokemon" v-bind:pokemon="pokemon" />
       <h4 v-else>No Pokemon found yet...</h4>
     </div>
     <div class="right">
-      <img src="../assets/pikatchu2.gif" alt="">
+      <img src="../assets/pikatchu2.gif" alt="pikatchu">
     </div>
   </div>
 </template>
@@ -44,7 +44,6 @@ export default {
           .get('https://pokeapi.co/api/v2/pokemon/'+this.query)
           .then(response => {
             this.pokemon = response.data;
-            console.log("Found Pokemon!")
           })
           .catch(error => {
             this.pokemon = null;
