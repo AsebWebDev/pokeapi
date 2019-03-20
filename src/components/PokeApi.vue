@@ -18,6 +18,12 @@
 <script>
 import Abilities from './Abilities.vue'
 import axios from 'axios';
+import { cacheAdapterEnhancer, throttleAdapterEnhancer } from 'axios-extensions';
+const http = axios.create({
+	baseURL: '/',
+	headers: { 'Cache-Control': 'no-cache' },
+	adapter: throttleAdapterEnhancer(cacheAdapterEnhancer(axios.defaults.adapter))
+});
 
 export default {
   name: 'PokeApi',
@@ -30,23 +36,15 @@ export default {
       pokemon: null
     }
   },
-  // mounted() {
-  //   if (localStorage.getItem('storage')) {
-  //     try {
-  //       this.storage = JSON.parse(localStorage.getItem('storage'));
-  //     } catch(e) {
-  //       localStorage.removeItem('storage');
-  //     }
-  //   }
-  // },
   methods: {
     getPokemon: function () {
       if (this.query === '') this.pokemon = null
       else {
-        axios
+        http
           .get('https://pokeapi.co/api/v2/pokemon/'+this.query)
           .then(response => {
             this.pokemon = response.data;
+            console.log("Found Pokemon!")
           })
           .catch(error => {
             this.pokemon = null;
