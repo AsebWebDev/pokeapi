@@ -1,8 +1,8 @@
 <template>
   <div class="abilities">
-    <h1>Abilities of {{pokemon.name.toUpperCase()}}</h1>
-    <ul>
-      <li v-bind:key="i" v-for="(ability,i) in pokemon.abilities">{{ability.ability.name}}</li>
+    <h4>Abilities of {{pokemon.name.toUpperCase()}}</h4>
+    <ul class="list-group">
+      <li class="list-group-item" v-bind:key="i" v-for="(ability,i) in pokemon.abilities">{{ability.ability.name}}</li>
     </ul>
   </div>
 </template>
@@ -17,5 +17,9 @@ export default {
 </script>
 
 <style scoped>
+  .abilities {
+    width: 200px;
+  }
+
 
 </style>

@@ -1,9 +1,17 @@
 <template>
-  <div class="pokeapi">
-    <input v-on:input="getPokemon()" v-model="query" placeholder="Enter your Pokemon here" />
-    {{query}}
-    <Abilities v-if="pokemon" v-bind:pokemon="pokemon" />
-    <h1 v-else>No Pokemon found yet...</h1>
+  <div class="pokeapi jumbotron">
+    <div class="left">
+      <img src="../assets/pikatchu.gif" alt="">
+    </div>
+    <div class="center">
+      <input v-on:input="getPokemon()" v-model="query" placeholder="Enter your Pokemon here" />
+      <p>Searching for {{query}}</p>
+      <Abilities v-if="pokemon" v-bind:pokemon="pokemon" />
+      <h4 v-else>No Pokemon found yet...</h4>
+    </div>
+    <div class="right">
+      <img src="../assets/pikatchu2.gif" alt="">
+    </div>
   </div>
 </template>
 
@@ -40,5 +48,15 @@ export default {
 </script>
 
 <style scoped>
+  img {
+    width: 100px;
+  }
+
+  .pokeapi {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+  }
 
 </style>
