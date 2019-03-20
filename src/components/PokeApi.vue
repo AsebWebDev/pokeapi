@@ -48,7 +48,7 @@ export default {
           })
           .catch(error => {
             this.pokemon = null;
-            if (error.response.status === 404) console.log("Pokemon does not exist.")
+            if (error.response && error.response.status === 404) console.log("Pokemon does not exist.")
           });
       }  
     }
